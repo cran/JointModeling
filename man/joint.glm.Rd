@@ -7,14 +7,14 @@
   the Mean and the Dispersion.}
 
 \usage{fitjoint(model, form.mean, form.disp, data, family.mean =
-gaussian, family.disp = Gamma(link='log'), eps = 10^(-6), iter.max =
+gaussian, family.disp = Gamma(link="log"), eps = 10^(-6), iter.max =
 100, maxit = 50, reml = TRUE)}
 \arguments{
   \item{model}{A character string. Must be one of \code{``glm''} and
     \code{``gam''} for GLMs and GAMs models respectively.}
-  \item{form.mean, form.disp}{R \emph{formula} put in a character
-    type way which specifies the linear model for the mean
-    and the dispersion respectively.}
+  \item{form.mean, form.disp}{\R \emph{formula} either in a character
+    type way or a pure \R formula which specifies the linear model for
+    the mean and the dispersion respectively.}
   \item{data}{A \emph{data.frame} for the data. The first column
     corresponds to the response observations, while others to the
     explicative variables.}
@@ -57,9 +57,18 @@ data.frm <- data.frame(Y=Y, X=X)
 ajust <- fitjoint("glm", 'Y~X', 'd~X', data = data.frm)
 ajust
 }
+\section{Warning}{
+  Be careful, for the double GLM model if the modeled dispersion
+  response is negative, the fitting process fails!!!
+}
 \references{
-  Lee, Y and Nelder, J. A. (2003). \emph{Robust Design via Generalized
+  Iooss, B. and Ribatet M. (2009). \emph{Global sensitivity analysis of
+    computer models with functional inputs.} Reliability Engineering and
+  System Safety, 64:1194-1204.
+  
+  Lee, Y. and Nelder, J. A. (2003). \emph{Robust Design via Generalized
     Linear Models.} Journal of Quality Technology, 35:2-12.
+  
   McCullagh P. and Nelder J. A. (1987). \emph{Generalized Linear Models
     Second Edition.} London: Chapman and Hall. ISBN 0-412-31760-5.}
 \keyword{htest}

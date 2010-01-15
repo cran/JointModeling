@@ -1,7 +1,5 @@
 obs.vs.model <- function(x.joint, plot.disp = FALSE, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   ##Plot observations functions of predicted values
 
   ##x.joint  : A list with two component. Both are objects of class
@@ -37,8 +35,6 @@ obs.vs.model <- function(x.joint, plot.disp = FALSE, ...){
 
 rstand.vs.linpred <- function(x, smooth = TRUE, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   ##Plot standardized residuals functions of  the linear
   ##predictor
 
@@ -49,7 +45,7 @@ rstand.vs.linpred <- function(x, smooth = TRUE, ...){
   ##...    : Optional arguments to be passed to the
   ##         ``plot'' and ``abline'' functions.
 
-  res.stand <- residuals(x, 'deviance') / sqrt(1 - hat.glm(x))
+  res.stand <- residuals(x, 'deviance') / sqrt(1 - hatvalues(x))
   lin.pred <- x$linear.predictors
   plot(lin.pred, res.stand, ...)
   abline( h =0, ...)
@@ -63,8 +59,6 @@ rstand.vs.linpred <- function(x, smooth = TRUE, ...){
 res.vs.explvar <- function(x, var, res = 'standard',
                            smooth = TRUE, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   ##Plot residuals functions of an explanatory variable
 
   ##x    : Object of class ``glm''
@@ -83,9 +77,9 @@ res.vs.explvar <- function(x, var, res = 'standard',
     var <- as.vector(x$data[[var]])
 
   res <- switch(res, 'standard' = residuals(x,'deviance') /
-                sqrt(1 - hat.glm(x)),
+                sqrt(1 - hatvalues(x)),
                 'student' = residuals(x, 'deviance') /
-                sqrt(summary(x)$dispersion*(1-hat.glm(x))),
+                sqrt(summary(x)$dispersion*(1-hatvalues(x))),
                 'brut' = residuals(x, 'deviance'))
   plot(var, res, ...)
   abline( h = 0, ...)
@@ -98,8 +92,6 @@ res.vs.explvar <- function(x, var, res = 'standard',
 absres.vs.fitted <- function(x, res = 'standard',
                              smooth = TRUE, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   ##Plot absolute residuals functions of predicted values
 
   ##x    : Object of class``glm''
@@ -113,9 +105,9 @@ absres.vs.fitted <- function(x, res = 'standard',
 
 
   res <- switch(res, 'standard' = residuals(x,'deviance') /
-                sqrt(1 - hat.glm(x)),
+                sqrt(1 - hatvalues(x)),
                 'student' = residuals(x, 'deviance') /
-                sqrt(summary(x)$dispersion*(1-hat.glm(x))),
+                sqrt(summary(x)$dispersion*(1-hatvalues(x))),
                 'brut' = residuals(x, 'deviance'))
 
   fitted <- x$fitted
@@ -129,8 +121,6 @@ absres.vs.fitted <- function(x, res = 'standard',
 
 adjvar.vs.linpred <- function(x, smooth = TRUE, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   ##Plot the adjusted dependent variable functions of
   ##the linear predictor.
 
@@ -173,8 +163,6 @@ plot.joint <- function(x, comp = "mean", var = NULL,
                        ask = nb.fig < length(which) &&
                        dev.interactive(), smooth = TRUE, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   if (!is.numeric(which) || any(which < 1) || any(which > 5)) 
         stop("`which' must be in 1:5")
   if (is.null(var) && any(which == 2))
@@ -213,8 +201,6 @@ plot.joint <- function(x, comp = "mean", var = NULL,
 
 qqglm <- function(x, ...){
 
-  cat("Package JointGLM is outdated. Please use the JointModeling packgage.\n")
-  
   ##Produce a QQ-plot for the studentized residuals
 
   ##x    : A fitted joint model object
@@ -222,7 +208,7 @@ qqglm <- function(x, ...){
   ##       function.
 
   res <- residuals(x, 'deviance') /
-                sqrt((1-hat.glm(x)) * summary(x)$dispersion)
+                sqrt((1-hatvalues(x)) * summary(x)$dispersion)
                 
   qqnorm(res, ...)
   abline(a = 0, b = 1, ...)

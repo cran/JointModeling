@@ -8,10 +8,10 @@ joint.gam <- function(form.mean, form.disp, data, family.mean = gaussian,
   ##and a Gamma distribution with log link function for the dispersion
   ##component
 
-  ##form.mean     : a R ``formula'' put in a character type way which
-  ##                specify the linear model for the mean
-  ##form.disp     : a R ``formula'' put in a character type way which
-  ##                specify the linear model for the dispersion
+  ##form.mean     : a R ``formula'' which specify the linear model for
+  ##                the mean
+  ##form.disp     : a R ``formula'' which specify the linear model for
+  ##                the dispersion
   ##data          : a ``data.frame'' corresponding to the data.
   ##                The first column correspond to the response
   ##                observations, while others to the explicative
@@ -25,7 +25,7 @@ joint.gam <- function(form.mean, form.disp, data, family.mean = gaussian,
   ##maxit         : The maximum number of iteration to fit a generic
   ##                GAM - see function ``gam.fit''
 
-  ##First convert formulas to ``real'' formula
+  ##Set formula as real R formulas
   form.mean <- as.formula(form.mean)
   form.disp <- as.formula(form.disp)
   

@@ -1,5 +1,5 @@
 fitjoint <- function(model, form.mean, form.disp, data, family.mean = gaussian,
-                     family.disp = Gamma(link='log'), eps = 10^(-6),
+                     family.disp = Gamma(link="log"), eps = 10^(-6),
                      iter.max = 100, maxit = 50, reml = TRUE){
 
   ##This function will fit the Joint Model through the framework describe
@@ -8,10 +8,10 @@ fitjoint <- function(model, form.mean, form.disp, data, family.mean = gaussian,
   ##and a Gamma distribution with log link function for the dispersion
   ##component
 
-  ##form.mean     : a R ``formula'' put in a character type way which
-  ##                specify the linear model for the mean
-  ##form.disp     : a R ``formula'' put in a character type way which
-  ##                specify the linear model for the dispersion
+  ##form.mean     : a R ``formula'' (either as a pure formula or character)
+  ##                which specify the linear model for the mean
+  ##form.disp     : a R ``formula'' (either as a pure formula or character)
+  ##                which specify the linear model for the dispersion
   ##data          : a ``data.frame'' corresponding to the data.
   ##                The first column correspond to the response
   ##                observations, while others to the explicative
@@ -27,6 +27,17 @@ fitjoint <- function(model, form.mean, form.disp, data, family.mean = gaussian,
   ##reml          : Logical. If TRUE, the Restricted Maximum Likelihood
   ##                Estimation is used.
 
+  ##If formulas are pure R formula convert them to character type
+  if (!is.character(form.mean)){
+    form.mean <- as.character(form.mean)
+    form.mean <- paste(form.mean[2], form.mean[1], form.mean[3])
+  }
+  if (!is.character(form.disp)){
+    form.disp <- as.character(form.disp)
+    form.disp <- paste(form.disp[2], form.disp[1], form.disp[3])
+  }
+
+  
   if (!(model %in% c("glm", "gam")))
     stop("``model'' should be one of ``glm'' or ``gam''.")
   

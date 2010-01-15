@@ -17,7 +17,7 @@
   Several useful informations about the fitted ``joint'' object.
 }
 \seealso{
-  \code{\link{fitjoint}}, \code{\joint{summary}}
+  \code{\link{fitjoint}}
 }
 \author{Mathieu Ribatet and Bertrand Iooss}
 \keyword{print}

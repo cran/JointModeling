@@ -8,10 +8,10 @@ joint.glm <- function(form.mean, form.disp, data,
   ##and a Gamma distribution with log link function for the dispersion
   ##component
 
-  ##form.mean     : a R ``formula'' put in a character type way which
-  ##                specify the linear model for the mean
-  ##form.disp     : a R ``formula'' put in a character type way which
-  ##                specify the linear model for the dispersion
+  ##form.mean     : a R ``formula'' which specify the linear model for the
+  ##                mean
+  ##form.disp     : a R ``formula'' which specify the linear model for the
+  ##                dispersion
   ##data          : a ``data.frame'' corresponding to the data.
   ##                The first column correspond to the response
   ##                observations, while others to the explicative
@@ -27,7 +27,7 @@ joint.glm <- function(form.mean, form.disp, data,
   ##reml          : Logical. If TRUE, the Restricted Maximum Likelihood
   ##                Estimation is used.
 
-  ##First convert formulas in ``real'' formula
+  ##Convert formulas as real R formulas
   form.mean <- as.formula(form.mean)
   form.disp <- as.formula(form.disp)
   
@@ -66,7 +66,7 @@ joint.glm <- function(form.mean, form.disp, data,
     d <- residuals(mod.mean.alias, 'deviance')^2
     
     if (reml)
-      d <- d / (1 - hat.glm(mod.mean))
+      d <- d / (1 - hatvalues(mod.mean))
     
     data.disp <- cbind(d = d, data[,-1])
     data.disp <- as.data.frame(data.disp)
@@ -74,7 +74,7 @@ joint.glm <- function(form.mean, form.disp, data,
 
     weights.disp <- rep(1, length(d))
     if (reml)
-      weights.disp <- 1 - hat.glm(mod.mean)
+      weights.disp <- 1 - hatvalues(mod.mean)
     
     mod.disp <- glm(form.disp, family = family.disp,
                     data = data.disp, weights = weights.disp,
@@ -132,13 +132,4 @@ eql <- function(mod.mean, mod.disp, df.adj = TRUE){
   eqd <- -2 * sum(dispersion * eqllik)
 
   return(c(eql = eql, eqd = eqd))
-}
-
-hat.glm <- function(glm){
-  X <- as.matrix(glm$data[,-1])
-  W <- diag(glm$weights)
-  H <- sqrt(W) %*% X %*% solve(t(X) %*% W %*% X) %*% t(X) %*% sqrt(W)
-  h <- diag(H)
-
-  return(h)
 }

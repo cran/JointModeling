@@ -1,3 +1,28 @@
+2006-11-09  ribatema@BRANDY  <ribatema@brandy>
+
+	* DESCRIPTION: Update the version number and date
+
+	* R/generics.R, man/joint.glm.Rd:
+	Change the default for the dispersion family now Gamma(link="log")
+
+	* R/graphics.R: Delete warnings ``Package JointGLM is outdated''
+
+	* R/generics.R:
+	Change the default option. Now the default family for the dispersion
+	component is Gamma().
+
+	* R/generics.R, R/joint.gam.R, R/joint.glm.R:
+	Change to allow both definition of formula as character and real R
+	formulas
+
+2006-11-02  ribatema@BRANDY  <ribatema@brandy>
+
+	* ChangeLog, DESCRIPTION, R/fromMgcv.R, R/generics.R, R/graphics.R, R/joint.gam.R, R/joint.glm.R, TODO, man/eqd.joint.Rd, man/graphics.Rd, man/hat.glm.Rd, man/internals.Rd, man/joint.glm.Rd, man/print.joint.Rd, man/summary.joint.Rd:
+	New file.
+
+	* ChangeLog, DESCRIPTION, R/fromMgcv.R, R/generics.R, R/graphics.R, R/joint.gam.R, R/joint.glm.R, TODO, man/eqd.joint.Rd, man/graphics.Rd, man/hat.glm.Rd, man/internals.Rd, man/joint.glm.Rd, man/print.joint.Rd, man/summary.joint.Rd:
+	import initial
+
 
 
 ************************************************************

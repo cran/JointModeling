@@ -1,0 +1,15 @@
+ed9db3b5f22a63350e81bd34f4509544 *ChangeLog
+dafe6cae83ffec171dbcf62e3800343d *DESCRIPTION
+7b4fecae0db8f29bb76290c95ca52214 *NAMESPACE
+6c3f5f3927a58e4dcdfc0f418a32f2e3 *R/fromMgcv.R
+7cac461335fc0fccfb5cae7f1d037eef *R/generics.R
+5afb612ede153cb4a90eaf4a2db733cc *R/graphics.R
+b9b9394a683ad8b38f05f4f13f64c325 *R/joint.gam.R
+a7e1dd8d63230a13d7c2366e2feda31f *R/joint.glm.R
+260b83fa4b1792615b18975715df717a *TODO
+8d827f963d6bfea91a773b0b694ae2df *man/eqd.joint.Rd
+ac83487b9ec290dd3b78b1774f7cf9e3 *man/graphics.Rd
+df19b549bfbd55f562ac9728e7a2f590 *man/internals.Rd
+d2311b0fb17f707547493f43d41d3ee8 *man/joint.glm.Rd
+26cf42dc181661434c473b22e774dc4c *man/print.joint.Rd
+972fb7156712e6a7d06503e23b538b1c *man/summary.joint.Rd
